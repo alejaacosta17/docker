@@ -28,7 +28,7 @@ RUN sudo apt-get install -y wget gpg&& \
 #Install .NET on Ubuntu https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2004
 RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
     sudo chmod +x ./dotnet-install.sh && \
-    ./dotnet-install.sh --version latest & \
+    ./dotnet-install.sh --version latest && \
     ./dotnet-install.sh --version latest --runtime aspnetcore && \
     ./dotnet-install.sh --channel 7.0
 # https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#set-environment-variables-system-wide set env
