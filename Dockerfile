@@ -36,14 +36,12 @@ RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
 RUN export PATH="$PATH:/root/.dotnet:/root/.dotnet/tools"
 ENV PATH=$PATH:/root/.dotnet:/root/.dotnet/tools
 
-
 RUN apt-get install -y apache2 && \
-    echo "hola mundo" > /var/www/html/index.html && \
-# Initialize apache server and now you can use localhost:80 to see the "hola mundo"
-    service apache start
-
+    echo "hola mundo" > /var/www/html/index.html
 
 #Expose ports for Apache and postgres
 EXPOSE 80 
+
+RUN service apache start
 
 
