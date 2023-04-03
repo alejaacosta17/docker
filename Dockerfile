@@ -2,6 +2,7 @@
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+
 # Install new updated packages and dependencies
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -32,7 +33,17 @@ RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
     ./dotnet-install.sh --version latest --runtime aspnetcore && \
     ./dotnet-install.sh --channel 7.0
 # https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#set-environment-variables-system-wide set env
-RUN export DOTNET_ROOT=$HOME/.dotnet && \
-    export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+RUN export PATH="$PATH:/root/.dotnet:/root/.dotnet/tools"
+ENV PATH=$PATH:/root/.dotnet:/root/.dotnet/tools
+
+
+RUN apt-get install -y apache2 && \
+    echo "hola mundo" > /var/www/html/index.html && \
+# Initialize apache server and now you can use localhost:80 to see the "hola mundo"
+    service apache start
+
+
+#Expose ports for Apache and postgres
+EXPOSE 80 
 
 
