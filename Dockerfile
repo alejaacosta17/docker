@@ -42,6 +42,6 @@ RUN apt-get install -y apache2 && \
 #Expose ports for Apache and postgres
 EXPOSE 80 
 
-RUN service apache start
+RUN service apache2 start
 
 
